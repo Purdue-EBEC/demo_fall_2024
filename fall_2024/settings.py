@@ -119,10 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = os.getenv('STATIC_URL')
-
-STATICFILES_DIRS = [
-    r'C:\Users\Kanari\Desktop\Program\demo\fall-2024-gh-pages',
-]
+STATICFILES_DIRS = os.getenv('STATICFILES_DIRS').split(',')
 STATIC_ROOT = os.getenv('STATIC_ROOT')
 
 # Default primary key field type
