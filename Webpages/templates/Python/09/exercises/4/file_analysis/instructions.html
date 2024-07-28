@@ -1,0 +1,1402 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>10.2.4. File Analysis &#8212; Purdue University EBEC 101</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=42dc69f5" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../../_static/documentation_options.js?v=a8e58a58"></script>
+    <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Python/09/exercises/4/file_analysis/instructions';</script>
+    <script src="../../../../../_static/svg-inject.js?v=6590e184"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="11. Plotting" href="../../../../10/0_overview.html" />
+    <link rel="prev" title="10.2.3. Course Info" href="../../3/course_info/instructions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/logo.png" class="logo__image only-light" alt="Purdue University EBEC 101 - Home"/>
+    <script>document.write(`<img src="../../../../../_static/logo.png" class="logo__image only-dark" alt="Purdue University EBEC 101 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../../intro.html">
+                    Entry-Level Programming in Python
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../00/0_overview.html">1. Welcome to Class</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../00/1_materials.html">1.1. Learning Materials</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../00/2_exercises.html">1.2. Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../00/exercises/1/hello_user/instructions.html">1.2.1. Hello User</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../01/0_overview.html">2. Introduction to <strong class="program">Python</strong></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../01/1_materials.html">2.1. Learning Materials</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../01/2_exercises.html">2.2. Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/exercises/1/road_trip/instructions.html">2.2.1. Road Trip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/exercises/2/interest/instructions.html">2.2.2. Interest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../01/exercises/3/cookie_recipe/instructions.html">2.2.3. Cookie Recipe</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../02/0_overview.html">3. Boolean Logic and Decision Structures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../02/1_materials.html">3.1. Learning Materials</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../02/2_exercises.html">3.2. Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../02/exercises/1/leap_year/instructions.html">3.2.1. Leap Year</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../02/exercises/2/software_sales/instructions.html">3.2.2. Software Sales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../02/exercises/3/roulette_colors/instructions.html">3.2.3. Roulette Color</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../02/exercises/4/time_calculator/instructions.html">3.2.4. Time Calculator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../02/exercises/5/fluid_mechanics/instructions.html">3.2.5. Fluid Mechanics</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../03/0_overview.html">4. Repetition Structures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../03/1_materials.html">4.1. Learning Materials</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../03/2_exercises.html">4.2. Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../03/exercises/1/cakes/instructions.html">4.2.1. Cakes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../03/exercises/2/sum_average/instructions.html">4.2.2. Sum Average</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../03/exercises/3/rainfall/instructions.html">4.2.3. Rainfall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../03/exercises/4/organism/instructions.html">4.2.4. Organism</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../04/0_overview.html">5. Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../04/1_materials.html">5.1. Learning Materials</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../04/2_exercises.html">5.2. Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../04/exercises/1/falling/instructions.html">5.2.1. Falling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../04/exercises/2/lucky_sum/instructions.html">5.2.2. Lucky Sum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../04/exercises/3/avg_grade/instructions.html">5.2.3. Average Grade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../04/exercises/4/prime_numbers/instructions.html">5.2.4. Prime Numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../04/exercises/5/prime_list/instructions.html">5.2.5. Prime List</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../05/0_overview.html">6. Turtle Graphics and Review</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../05/1_materials.html">6.1. Learning Materials</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../05/2_exercises.html">6.2. Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../05/exercises/1/maze/instructions.html">6.2.1. Maze</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../05/exercises/2/spiral/instructions.html">6.2.2. Spiral</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../05/exercises/3/star_pattern/instructions.html">6.2.3. Star Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../05/exercises/4/turtle_writing/instructions.html">6.2.4. Turtle Writing</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../06/0_overview.html">7. Modularization Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../06/1_materials.html">7.1. Learning Materials</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../06/2_exercises.html">7.2. Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../06/exercises/1/math_quiz/instructions.html">7.2.1. Math Quiz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../06/exercises/2/rock_paper_scissors/instructions.html">7.2.2. Rock Paper Scissors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../06/exercises/3/random_vowels/instructions.html">7.2.3. Random Vowels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../06/exercises/4/spiral/instructions.html">7.2.4. Spiral</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../07/0_overview.html">8. Sequences (mostly Lists and Tuples)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../07/1_materials.html">8.1. Learning Materials</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../07/2_exercises.html">8.2. Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../07/exercises/1/data_parsing/instructions.html">8.2.1. Data Parsing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../07/exercises/2/spiral/instructions.html">8.2.2. Spiral</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../07/exercises/3/roll_analysis/instructions.html">8.2.3. Roll Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../07/exercises/4/magic_square/instructions.html">8.2.4. Magic Square</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../08/0_overview.html">9. Strings and File IO</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../08/1_materials.html">9.1. Learning Materials</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../08/2_exercises.html">9.2. Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../08/exercises/1/pig_latin/instructions.html">9.2.1. Pig Latin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../08/exercises/2/phone_number_converter/instructions.html">9.2.2. Phone Number Converter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../08/exercises/3/file_stats/instructions.html">9.2.3. File Stat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../08/exercises/4/number_writer/instructions.html">9.2.4. Number Writer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../08/exercises/5/number_reader/instructions.html">9.2.5. Number Reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../08/exercises/6/step_counter/instructions.html">9.2.6. Step Counter</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../0_overview.html">10. Dictionaries and Sets</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../1_materials.html">10.1. Learning Materials</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../../2_exercises.html">10.2. Exercises</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../1/capital_quiz/instructions.html">10.2.1. Capital Quiz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../2/world_series/instructions.html">10.2.2. World Series</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../3/course_info/instructions.html">10.2.3. Course Info</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">10.2.4. File Analysis</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../10/0_overview.html">11. Plotting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../10/1_materials.html">11.1. Learning Materials</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../10/2_exercises.html">11.2. Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../10/exercises/1/monthly_sales/instructions.html">11.2.1. Monthly Sales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../10/exercises/2/gas_prices/instructions.html">11.2.2. Gas Prices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../10/exercises/3/covid_19_cases/instructions.html">11.2.3. Covid-19 Cases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../10/exercises/4/function_plot/instructions.html">11.2.4. Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../11/0_overview.html">12. Object-Oriented Programming (OOP)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../11/1_materials.html">12.1. Learning Materials</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../11/2_exercises.html">12.2. Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../11/exercises/1/dice/instructions.html">12.2.1. Dice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../11/exercises/2/garage/instructions.html">12.2.2. Garage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../11/exercises/3/rockets/instructions.html">12.2.3. Rockets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../11/exercises/4/bank_accounts/instructions.html">12.2.4. Bank Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../11/exercises/5/user_privileges/instructions.html">12.2.5. User Privileges</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../Appendices/issues.html">Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../Appendices/contributors.html">Contributors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/Purdue-EBEC/fall-2024/issues/new?title=Issue%20on%20page%20%2FPython/09/exercises/4/file_analysis/instructions.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>File Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-output">Sample Output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deliverables">Deliverables</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="d-none math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\newcommand\blank{~\underline{\hspace{1.2cm}}~}\\% Bold symbols (vectors)
+\newcommand\bs[1]{\mathbf{#1}}\\% Poor man's siunitx
+\newcommand\unit[1]{\mathrm{#1}}
+\newcommand\num[1]{#1}
+\newcommand\qty[2]{#1~\unit{#2}}\\\newcommand\per{/}
+\newcommand\squared{{}^2}
+%
+% Scale
+\newcommand\milli{\unit{m}}
+\newcommand\centi{\unit{c}}
+\newcommand\kilo{\unit{k}}
+\newcommand\mega{\unit{M}}
+%
+% Angle
+\newcommand\radian{\unit{rad}}
+\newcommand\degree{\unit{{}^\circ}}
+%
+% Time
+\newcommand\second{\unit{s}}
+%
+% Distance
+\newcommand\meter{\unit{m}}
+\newcommand\m{\meter}
+\newcommand\inch{\unit{in}}
+\newcommand\feet{\unit{ft}}
+\newcommand\mile{\unit{mi}}
+\newcommand\mi{\mile}
+%
+% Volume
+\newcommand\gallon{\unit{gal}}
+%
+% Mass
+\newcommand\gram{\unit{g}}
+\newcommand\g{\gram}
+%
+% Frequency
+\newcommand\hertz{\unit{Hz}}
+\newcommand\rpm{\unit{rpm}}
+%
+% Voltage
+\newcommand\volt{\unit{V}}
+\newcommand\V{\volt}
+\newcommand\millivolt{\milli\volt}
+\newcommand\mV{\milli\volt}
+\newcommand\kilovolt{\kilo\volt}
+\newcommand\kV{\kilo\volt}
+%
+% Current
+\newcommand\ampere{\unit{A}}
+\newcommand\A{\ampere}
+\newcommand\milliampereA{\milli\ampere}
+\newcommand\mA{\milli\ampere}
+\newcommand\kiloampereA{\kilo\ampere}
+\newcommand\kA{\kilo\ampere}
+%
+% Resistance
+\newcommand\ohm{\Omega}
+\newcommand\milliohm{\milli\ohm}
+\newcommand\kiloohm{\kilo\ohm} % correct SI spelling
+\newcommand\kilohm{\kilo\ohm} % &quot;American&quot; spelling used in siunitx
+\newcommand\megaohm{\mega\ohm} % correct SI spelling
+\newcommand\megohm{\mega\ohm} % &quot;American&quot; spelling used in siunitx
+%
+% Inductance
+\newcommand\henry{\unit{H}}
+\newcommand\H{\henry}
+\newcommand\millihenry{\milli\henry}
+\newcommand\mH{\milli\henry}
+%
+% Temperature
+\newcommand\celsius{\unit{^{\circ}C}}
+\newcommand\C{\unit{\celsius}}
+\newcommand\fahrenheit{\unit{^{\circ}F}}
+\newcommand\F{\unit{\fahrenheit}}
+\newcommand\kelvin{\unit{\K}}
+\newcommand\K{\unit{\kelvin}}\\% Power
+\newcommand\watt{\unit{W}}
+\newcommand\W{\watt}
+\newcommand\milliwatt{\milli\watt}
+\newcommand\mW{\milli\watt}
+\newcommand\kilowatt{\kilo\watt}
+\newcommand\kW{\kilo\watt}
+%
+% Torque
+\newcommand\ozin{\unit{oz}\text{-}\unit{in}}
+\newcommand\newtonmeter{\unit{N\text{-}m}}\end{aligned}\end{align} \]</div>
+<p>Jul 25, 2024 | 318 words | 3 min read</p>
+<section class="tex2jax_ignore mathjax_ignore" id="file-analysis">
+<span id="u09-ex-4"></span><h1><span class="section-number">10.2.4. </span>File Analysis<a class="headerlink" href="#file-analysis" title="Link to this heading">#</a></h1>
+<section id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Link to this heading">#</a></h2>
+<p>Write a program that processes the two provided text files
+(<a class="reference download internal" download="" href="../../../../../_downloads/a37a7527727a22a98b2a9a0468ee9f1c/python_1.txt"><code class="xref download docutils literal notranslate"><span class="pre">python_1.txt</span></code></a> and <a class="reference download internal" download="" href="../../../../../_downloads/8cf0ea4306836fd89d93340ec4303b01/python_2.txt"><code class="xref download docutils literal notranslate"><span class="pre">python_2.txt</span></code></a>) and produces the following
+output files.</p>
+<dl class="simple myst">
+<dt><code class="code highlight python docutils literal highlight-python"><span class="n">python_1_word_frequency</span><span class="o">.</span><span class="n">txt</span></code></dt><dd><p>This file should contain all of the unique words in the file <code class="code highlight python docutils literal highlight-python"><span class="n">python_1</span><span class="o">.</span><span class="n">txt</span></code>
+printed one per line in alphabetical order.  Each word should be followed by a colon,
+a space, and the number of times that word appears in <code class="code highlight python docutils literal highlight-python"><span class="n">python_1</span><span class="o">.</span><span class="n">txt</span></code>.</p>
+</dd>
+<dt><code class="code highlight python docutils literal highlight-python"><span class="n">python_2_word_frequency</span><span class="o">.</span><span class="n">txt</span></code></dt><dd><p>This file should contain all of the unique words in the file <code class="code highlight python docutils literal highlight-python"><span class="n">python_2</span><span class="o">.</span><span class="n">txt</span></code>
+printed one per line in alphabetical order.  Each word should be followed by a colon,
+a space, and the number of times that word appears in <code class="code highlight python docutils literal highlight-python"><span class="n">python_2</span><span class="o">.</span><span class="n">txt</span></code>.</p>
+</dd>
+<dt><code class="code highlight python docutils literal highlight-python"><span class="n">common_words</span><span class="o">.</span><span class="n">txt</span></code></dt><dd><p>This output file should contain all of the words that appear in both <code class="code highlight python docutils literal highlight-python"><span class="n">python_1</span><span class="o">.</span><span class="n">txt</span></code>
+and <code class="code highlight python docutils literal highlight-python"><span class="n">python_2</span><span class="o">.</span><span class="n">txt</span></code>, printed one per line in alphabetical order.</p>
+</dd>
+<dt><code class="code highlight python docutils literal highlight-python"><span class="n">eitherbutnotboth</span><span class="o">.</span><span class="n">txt</span></code></dt><dd><p>This file should contain all of the words that appear in either <code class="code highlight python docutils literal highlight-python"><span class="n">python_1</span><span class="o">.</span><span class="n">txt</span></code>
+or <code class="code highlight python docutils literal highlight-python"><span class="n">python_2</span><span class="o">.</span><span class="n">txt</span></code> but no words that appear in both.  The words should be printed
+one per line in alphabetical order.</p>
+</dd>
+</dl>
+<p>For comparison purposes, all the words should be converted to lower case and
+all leading and trailing punctuation should be removed.</p>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Hints:</strong></p>
+<ul class="simple">
+<li><p>The <code class="code highlight python docutils literal highlight-python"><span class="n">string</span></code> module includes a <code class="code highlight python docutils literal highlight-python"><span class="n">punctuation</span></code> string which
+contains all of the ASCII punctuation characters.</p></li>
+<li><p>It might be helpful to write a function that accepts a filename as an
+argument and returns a list of all the words in that file.  Then have
+another function that accepts a list of words as an argument and returns a
+dictionary with the unique words in the list as keys and the number of
+times each word appears in the file as values.</p></li>
+<li><p>You can use the <code class="code highlight python docutils literal highlight-python"><span class="nb">sorted</span><span class="p">()</span></code> function to get a sorted list of the
+keys and values in a dictionary.</p></li>
+<li><p>You can use the <code class="code highlight python docutils literal highlight-python"><span class="nb">set</span><span class="p">()</span></code> function to create a set from the keys
+in a dictionary.</p></li>
+</ul>
+</div>
+</section>
+<section id="sample-output">
+<span id="mod-python-09-4-file-analysis-sample-output"></span><h2>Sample Output<a class="headerlink" href="#sample-output" title="Link to this heading">#</a></h2>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 10.1 </span><span class="caption-text">Case__common_words.txt</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="output-file highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">a</span>
+<span class="linenos"> 2</span><span class="n">also</span>
+<span class="linenos"> 3</span><span class="n">an</span>
+<span class="linenos"> 4</span><span class="ow">and</span>
+<span class="linenos"> 5</span><span class="n">application</span>
+<span class="linenos"> 6</span><span class="n">applications</span>
+<span class="linenos"> 7</span><span class="n">are</span>
+<span class="linenos"> 8</span><span class="k">as</span>
+<span class="linenos"> 9</span><span class="n">available</span>
+<span class="linenos">10</span><span class="n">be</span>
+<span class="linenos">11</span><span class="n">but</span>
+<span class="linenos">12</span><span class="n">c</span>
+<span class="linenos">13</span><span class="n">can</span>
+<span class="linenos">14</span><span class="n">data</span>
+<span class="linenos">15</span><span class="n">development</span>
+<span class="linenos">16</span><span class="n">easy</span>
+<span class="linenos">17</span><span class="n">even</span>
+<span class="linenos">18</span><span class="n">extension</span>
+<span class="linenos">19</span><span class="k">for</span>
+<span class="linenos">20</span><span class="n">has</span>
+<span class="linenos">21</span><span class="n">have</span>
+<span class="linenos">22</span><span class="n">high</span><span class="o">-</span><span class="n">level</span>
+<span class="linenos">23</span><span class="ow">in</span>
+<span class="linenos">24</span><span class="ow">is</span>
+<span class="linenos">25</span><span class="n">it</span>
+<span class="linenos">26</span><span class="n">its</span>
+<span class="linenos">27</span><span class="n">language</span>
+<span class="linenos">28</span><span class="n">languages</span>
+<span class="linenos">29</span><span class="n">library</span>
+<span class="linenos">30</span><span class="n">many</span>
+<span class="linenos">31</span><span class="n">may</span>
+<span class="linenos">32</span><span class="n">modules</span>
+<span class="linenos">33</span><span class="n">more</span>
+<span class="linenos">34</span><span class="n">new</span>
+<span class="linenos">35</span><span class="ow">not</span>
+<span class="linenos">36</span><span class="n">of</span>
+<span class="linenos">37</span><span class="n">on</span>
+<span class="linenos">38</span><span class="ow">or</span>
+<span class="linenos">39</span><span class="n">other</span>
+<span class="linenos">40</span><span class="n">programming</span>
+<span class="linenos">41</span><span class="n">programs</span>
+<span class="linenos">42</span><span class="n">python</span>
+<span class="linenos">43</span><span class="n">several</span>
+<span class="linenos">44</span><span class="n">simple</span>
+<span class="linenos">45</span><span class="n">standard</span>
+<span class="linenos">46</span><span class="n">the</span>
+<span class="linenos">47</span><span class="n">to</span>
+<span class="linenos">48</span><span class="n">types</span>
+<span class="linenos">49</span><span class="n">will</span>
+<span class="linenos">50</span><span class="k">with</span>
+<span class="linenos">51</span><span class="n">write</span>
+<span class="linenos">52</span><span class="n">you</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 10.2 </span><span class="caption-text">Case__eitherbutnotboth.txt</span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
+<div class="output-file highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="mi">1</span>
+<span class="linenos">  2</span><span class="n">able</span>
+<span class="linenos">  3</span><span class="n">about</span>
+<span class="linenos">  4</span><span class="n">additional</span>
+<span class="linenos">  5</span><span class="n">after</span>
+<span class="linenos">  6</span><span class="nb">all</span>
+<span class="linenos">  7</span><span class="n">allows</span>
+<span class="linenos">  8</span><span class="n">api</span>
+<span class="linenos">  9</span><span class="n">appetite</span>
+<span class="linenos"> 10</span><span class="n">applicable</span>
+<span class="linenos"> 11</span><span class="n">approach</span>
+<span class="linenos"> 12</span><span class="n">areas</span>
+<span class="linenos"> 13</span><span class="n">around</span>
+<span class="linenos"> 14</span><span class="n">arrays</span>
+<span class="linenos"> 15</span><span class="n">at</span>
+<span class="linenos"> 16</span><span class="n">attempt</span>
+<span class="linenos"> 17</span><span class="n">automate</span>
+<span class="linenos"> 18</span><span class="n">awk</span>
+<span class="linenos"> 19</span><span class="n">basic</span>
+<span class="linenos"> 20</span><span class="n">basis</span>
+<span class="linenos"> 21</span><span class="n">batch</span>
+<span class="linenos"> 22</span><span class="n">because</span>
+<span class="linenos"> 23</span><span class="n">being</span>
+<span class="linenos"> 24</span><span class="n">best</span>
+<span class="linenos"> 25</span><span class="n">binary</span>
+<span class="linenos"> 26</span><span class="n">books</span>
+<span class="linenos"> 27</span><span class="n">built</span>
+<span class="linenos"> 28</span><span class="n">bunch</span>
+<span class="linenos"> 29</span><span class="n">c</span><span class="o">/</span><span class="n">c</span><span class="o">++/</span><span class="n">java</span>
+<span class="linenos"> 30</span><span class="nb">callable</span>
+<span class="linenos"> 31</span><span class="n">changing</span>
+<span class="linenos"> 32</span><span class="n">checking</span>
+<span class="linenos"> 33</span><span class="n">code</span>
+<span class="linenos"> 34</span><span class="n">collection</span>
+<span class="linenos"> 35</span><span class="n">comes</span>
+<span class="linenos"> 36</span><span class="n">commonly</span>
+<span class="linenos"> 37</span><span class="n">complicated</span>
+<span class="linenos"> 38</span><span class="n">comprehensive</span>
+<span class="linenos"> 39</span><span class="n">computers</span>
+<span class="linenos"> 40</span><span class="n">concepts</span>
+<span class="linenos"> 41</span><span class="n">contains</span>
+<span class="linenos"> 42</span><span class="n">could</span>
+<span class="linenos"> 43</span><span class="n">cover</span>
+<span class="linenos"> 44</span><span class="n">covering</span>
+<span class="linenos"> 45</span><span class="n">custom</span>
+<span class="linenos"> 46</span><span class="n">customizable</span>
+<span class="linenos"> 47</span><span class="n">cycle</span>
+<span class="linenos"> 48</span><span class="n">database</span>
+<span class="linenos"> 49</span><span class="n">definition</span>
+<span class="linenos"> 50</span><span class="n">depth</span>
+<span class="linenos"> 51</span><span class="n">described</span>
+<span class="linenos"> 52</span><span class="n">description</span>
+<span class="linenos"> 53</span><span class="n">design</span>
+<span class="linenos"> 54</span><span class="n">developer</span>
+<span class="linenos"> 55</span><span class="n">dictionaries</span>
+<span class="linenos"> 56</span><span class="n">distributed</span>
+<span class="linenos"> 57</span><span class="n">distributions</span>
+<span class="linenos"> 58</span><span class="n">do</span>
+<span class="linenos"> 59</span><span class="n">documentation</span>
+<span class="linenos"> 60</span><span class="n">does</span>
+<span class="linenos"> 61</span><span class="n">domain</span>
+<span class="linenos"> 62</span><span class="n">don</span><span class="s1">&#39;t</span>
+<span class="linenos"> 63</span><span class="n">done</span>
+<span class="linenos"> 64</span><span class="n">dynamic</span>
+<span class="linenos"> 65</span><span class="n">easily</span>
+<span class="linenos"> 66</span><span class="n">effective</span>
+<span class="linenos"> 67</span><span class="n">efficient</span>
+<span class="linenos"> 68</span><span class="n">elegant</span>
+<span class="linenos"> 69</span><span class="n">embedding</span>
+<span class="linenos"> 70</span><span class="n">error</span>
+<span class="linenos"> 71</span><span class="n">eventually</span>
+<span class="linenos"> 72</span><span class="n">every</span>
+<span class="linenos"> 73</span><span class="n">example</span>
+<span class="linenos"> 74</span><span class="n">examples</span>
+<span class="linenos"> 75</span><span class="n">experience</span>
+<span class="linenos"> 76</span><span class="n">extended</span>
+<span class="linenos"> 77</span><span class="n">extending</span>
+<span class="linenos"> 78</span><span class="n">extensions</span>
+<span class="linenos"> 79</span><span class="n">extensive</span>
+<span class="linenos"> 80</span><span class="n">feature</span>
+<span class="linenos"> 81</span><span class="n">features</span>
+<span class="linenos"> 82</span><span class="n">files</span>
+<span class="linenos"> 83</span><span class="n">find</span>
+<span class="linenos"> 84</span><span class="n">first</span><span class="o">-</span><span class="n">draft</span>
+<span class="linenos"> 85</span><span class="n">flavor</span>
+<span class="linenos"> 86</span><span class="n">flexible</span>
+<span class="linenos"> 87</span><span class="n">form</span>
+<span class="linenos"> 88</span><span class="n">formal</span>
+<span class="linenos"> 89</span><span class="n">free</span>
+<span class="linenos"> 90</span><span class="n">freely</span>
+<span class="linenos"> 91</span><span class="kn">from</span>
+<span class="linenos"> 92</span><span class="nn">functions</span>
+<span class="linenos"> 93</span><span class="n">game</span>
+<span class="linenos"> 94</span><span class="n">games</span>
+<span class="linenos"> 95</span><span class="n">general</span>
+<span class="linenos"> 96</span><span class="n">get</span>
+<span class="linenos"> 97</span><span class="n">give</span>
+<span class="linenos"> 98</span><span class="n">gives</span>
+<span class="linenos"> 99</span><span class="n">good</span>
+<span class="linenos">100</span><span class="n">gui</span>
+<span class="linenos">101</span><span class="n">hand</span>
+<span class="linenos">102</span><span class="n">hands</span><span class="o">-</span><span class="n">on</span>
+<span class="linenos">103</span><span class="n">handy</span>
+<span class="linenos">104</span><span class="n">help</span>
+<span class="linenos">105</span><span class="n">helps</span>
+<span class="linenos">106</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span>
+<span class="linenos">107</span><span class="n">idea</span>
+<span class="linenos">108</span><span class="n">ideal</span>
+<span class="linenos">109</span><span class="k">if</span>
+<span class="linenos">110</span><span class="n">implement</span>
+<span class="linenos">111</span><span class="n">implemented</span>
+<span class="linenos">112</span><span class="n">informally</span>
+<span class="linenos">113</span><span class="n">instead</span>
+<span class="linenos">114</span><span class="n">interpreted</span>
+<span class="linenos">115</span><span class="n">interpreter</span>
+<span class="linenos">116</span><span class="n">into</span>
+<span class="linenos">117</span><span class="n">introduces</span>
+<span class="linenos">118</span><span class="n">job</span>
+<span class="linenos">119</span><span class="n">just</span>
+<span class="linenos">120</span><span class="n">language</span><span class="s1">&#39;s</span>
+<span class="linenos">121</span><span class="n">large</span>
+<span class="linenos">122</span><span class="n">larger</span>
+<span class="linenos">123</span><span class="n">learn</span>
+<span class="linenos">124</span><span class="n">least</span>
+<span class="linenos">125</span><span class="n">libraries</span>
+<span class="linenos">126</span><span class="n">like</span>
+<span class="linenos">127</span><span class="n">lot</span>
+<span class="linenos">128</span><span class="n">macos</span>
+<span class="linenos">129</span><span class="n">major</span>
+<span class="linenos">130</span><span class="n">make</span>
+<span class="linenos">131</span><span class="n">manual</span>
+<span class="linenos">132</span><span class="n">maybe</span>
+<span class="linenos">133</span><span class="n">most</span>
+<span class="linenos">134</span><span class="n">moving</span>
+<span class="linenos">135</span><span class="n">much</span>
+<span class="linenos">136</span><span class="n">nature</span>
+<span class="linenos">137</span><span class="n">noteworthy</span>
+<span class="linenos">138</span><span class="n">number</span>
+<span class="linenos">139</span><span class="nb">object</span><span class="o">-</span><span class="n">oriented</span>
+<span class="linenos">140</span><span class="n">objects</span>
+<span class="linenos">141</span><span class="n">off</span><span class="o">-</span><span class="n">line</span>
+<span class="linenos">142</span><span class="n">offer</span>
+<span class="linenos">143</span><span class="n">offering</span>
+<span class="linenos">144</span><span class="n">offers</span>
+<span class="linenos">145</span><span class="n">operating</span>
+<span class="linenos">146</span><span class="n">over</span>
+<span class="linenos">147</span><span class="n">party</span>
+<span class="linenos">148</span><span class="n">perform</span>
+<span class="linenos">149</span><span class="n">perhaps</span>
+<span class="linenos">150</span><span class="n">perl</span>
+<span class="linenos">151</span><span class="n">photo</span>
+<span class="linenos">152</span><span class="n">platforms</span>
+<span class="linenos">153</span><span class="n">pointers</span>
+<span class="linenos">154</span><span class="n">powerful</span>
+<span class="linenos">155</span><span class="n">problem</span>
+<span class="linenos">156</span><span class="n">professional</span>
+<span class="linenos">157</span><span class="n">program</span>
+<span class="linenos">158</span><span class="n">python</span><span class="s1">&#39;s</span>
+<span class="linenos">159</span><span class="n">python</span><span class="o">/</span><span class="n">c</span>
+<span class="linenos">160</span><span class="n">quickly</span>
+<span class="linenos">161</span><span class="n">rapid</span>
+<span class="linenos">162</span><span class="n">read</span>
+<span class="linenos">163</span><span class="n">reader</span>
+<span class="linenos">164</span><span class="n">reading</span>
+<span class="linenos">165</span><span class="n">ready</span>
+<span class="linenos">166</span><span class="n">real</span>
+<span class="linenos">167</span><span class="n">rearrange</span>
+<span class="linenos">168</span><span class="n">reference</span>
+<span class="linenos">169</span><span class="n">rename</span>
+<span class="linenos">170</span><span class="n">reused</span>
+<span class="linenos">171</span><span class="n">same</span>
+<span class="linenos">172</span><span class="n">script</span>
+<span class="linenos">173</span><span class="n">scripting</span>
+<span class="linenos">174</span><span class="n">scripts</span>
+<span class="linenos">175</span><span class="n">search</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">replace</span>
+<span class="linenos">176</span><span class="n">see</span>
+<span class="linenos">177</span><span class="bp">self</span><span class="o">-</span><span class="n">contained</span>
+<span class="linenos">178</span><span class="n">shell</span>
+<span class="linenos">179</span><span class="n">simpler</span>
+<span class="linenos">180</span><span class="n">single</span>
+<span class="linenos">181</span><span class="n">site</span>
+<span class="linenos">182</span><span class="n">slow</span>
+<span class="linenos">183</span><span class="n">small</span>
+<span class="linenos">184</span><span class="n">so</span>
+<span class="linenos">185</span><span class="n">software</span>
+<span class="linenos">186</span><span class="n">some</span>
+<span class="linenos">187</span><span class="n">source</span>
+<span class="linenos">188</span><span class="n">specialized</span>
+<span class="linenos">189</span><span class="n">split</span>
+<span class="linenos">190</span><span class="n">structure</span>
+<span class="linenos">191</span><span class="n">structures</span>
+<span class="linenos">192</span><span class="n">style</span>
+<span class="linenos">193</span><span class="n">such</span>
+<span class="linenos">194</span><span class="n">suitable</span>
+<span class="linenos">195</span><span class="n">suite</span>
+<span class="linenos">196</span><span class="n">support</span>
+<span class="linenos">197</span><span class="n">syntax</span>
+<span class="linenos">198</span><span class="n">system</span>
+<span class="linenos">199</span><span class="n">systems</span>
+<span class="linenos">200</span><span class="n">take</span>
+<span class="linenos">201</span><span class="n">task</span>
+<span class="linenos">202</span><span class="n">tasks</span>
+<span class="linenos">203</span><span class="n">tedious</span>
+<span class="linenos">204</span><span class="n">test</span>
+<span class="linenos">205</span><span class="n">testing</span>
+<span class="linenos">206</span><span class="n">text</span>
+<span class="linenos">207</span><span class="n">than</span>
+<span class="linenos">208</span><span class="n">that</span>
+<span class="linenos">209</span><span class="n">there</span>
+<span class="linenos">210</span><span class="n">there</span><span class="s1">&#39;s</span>
+<span class="linenos">211</span><span class="n">these</span>
+<span class="linenos">212</span><span class="n">things</span>
+<span class="linenos">213</span><span class="n">third</span>
+<span class="linenos">214</span><span class="n">this</span>
+<span class="linenos">215</span><span class="n">those</span>
+<span class="linenos">216</span><span class="n">time</span>
+<span class="linenos">217</span><span class="n">together</span>
+<span class="linenos">218</span><span class="n">too</span>
+<span class="linenos">219</span><span class="n">tools</span>
+<span class="linenos">220</span><span class="n">tutorial</span>
+<span class="linenos">221</span><span class="n">typing</span>
+<span class="linenos">222</span><span class="n">unix</span>
+<span class="linenos">223</span><span class="n">use</span>
+<span class="linenos">224</span><span class="n">used</span>
+<span class="linenos">225</span><span class="n">usual</span>
+<span class="linenos">226</span><span class="n">various</span>
+<span class="linenos">227</span><span class="n">very</span><span class="o">-</span><span class="n">high</span><span class="o">-</span><span class="n">level</span>
+<span class="linenos">228</span><span class="n">want</span>
+<span class="linenos">229</span><span class="n">way</span>
+<span class="linenos">230</span><span class="n">web</span>
+<span class="linenos">231</span><span class="n">well</span>
+<span class="linenos">232</span><span class="n">well</span><span class="o">-</span><span class="n">suited</span>
+<span class="linenos">233</span><span class="n">whetting</span>
+<span class="linenos">234</span><span class="n">whole</span>
+<span class="linenos">235</span><span class="n">windows</span>
+<span class="linenos">236</span><span class="n">wish</span>
+<span class="linenos">237</span><span class="n">work</span>
+<span class="linenos">238</span><span class="n">write</span><span class="o">/</span><span class="nb">compile</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">re</span><span class="o">-</span><span class="nb">compile</span>
+<span class="linenos">239</span><span class="n">writing</span>
+<span class="linenos">240</span><span class="n">written</span>
+<span class="linenos">241</span><span class="n">yet</span>
+<span class="linenos">242</span><span class="n">you</span><span class="s1">&#39;d</span>
+<span class="linenos">243</span><span class="n">you</span><span class="s1">&#39;re</span>
+<span class="linenos">244</span><span class="n">you</span><span class="s1">&#39;ve</span>
+<span class="linenos">245</span><span class="n">your</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 10.3 </span><span class="caption-text">Case__python_1_word_frequency.txt</span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
+<div class="output-file highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="n">a</span><span class="p">:</span> <span class="mi">5</span>
+<span class="linenos">  2</span><span class="n">able</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">  3</span><span class="n">about</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">  4</span><span class="n">additional</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">  5</span><span class="n">after</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">  6</span><span class="nb">all</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">  7</span><span class="n">also</span><span class="p">:</span> <span class="mi">3</span>
+<span class="linenos">  8</span><span class="n">an</span><span class="p">:</span> <span class="mi">3</span>
+<span class="linenos">  9</span><span class="ow">and</span><span class="p">:</span> <span class="mi">20</span>
+<span class="linenos"> 10</span><span class="n">api</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 11</span><span class="n">application</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 12</span><span class="n">applications</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 13</span><span class="n">approach</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 14</span><span class="n">are</span><span class="p">:</span> <span class="mi">3</span>
+<span class="linenos"> 15</span><span class="n">areas</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 16</span><span class="k">as</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 17</span><span class="n">attempt</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 18</span><span class="n">available</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 19</span><span class="n">basic</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 20</span><span class="n">be</span><span class="p">:</span> <span class="mi">5</span>
+<span class="linenos"> 21</span><span class="n">binary</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 22</span><span class="n">books</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 23</span><span class="n">but</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 24</span><span class="n">c</span><span class="p">:</span> <span class="mi">5</span>
+<span class="linenos"> 25</span><span class="nb">callable</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 26</span><span class="n">can</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 27</span><span class="n">commonly</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 28</span><span class="n">comprehensive</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 29</span><span class="n">concepts</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 30</span><span class="n">contains</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 31</span><span class="n">cover</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 32</span><span class="n">covering</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 33</span><span class="n">customizable</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 34</span><span class="n">data</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 35</span><span class="n">definition</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 36</span><span class="n">depth</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 37</span><span class="n">described</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 38</span><span class="n">description</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 39</span><span class="n">development</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 40</span><span class="n">distributed</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 41</span><span class="n">distributions</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 42</span><span class="n">documentation</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 43</span><span class="n">does</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 44</span><span class="n">dynamic</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 45</span><span class="n">easily</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 46</span><span class="n">easy</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 47</span><span class="n">effective</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 48</span><span class="n">efficient</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 49</span><span class="n">elegant</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 50</span><span class="n">embedding</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 51</span><span class="n">even</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 52</span><span class="n">every</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 53</span><span class="n">examples</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 54</span><span class="n">experience</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 55</span><span class="n">extended</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 56</span><span class="n">extending</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 57</span><span class="n">extension</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 58</span><span class="n">extensions</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 59</span><span class="n">extensive</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 60</span><span class="n">feature</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 61</span><span class="n">features</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 62</span><span class="n">flavor</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 63</span><span class="k">for</span><span class="p">:</span> <span class="mi">5</span>
+<span class="linenos"> 64</span><span class="n">form</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 65</span><span class="n">formal</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 66</span><span class="n">free</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 67</span><span class="n">freely</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 68</span><span class="n">from</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 69</span><span class="n">functions</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 70</span><span class="n">give</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 71</span><span class="n">gives</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 72</span><span class="n">good</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 73</span><span class="n">hands</span><span class="o">-</span><span class="n">on</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 74</span><span class="n">handy</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 75</span><span class="n">has</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 76</span><span class="n">have</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 77</span><span class="n">helps</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 78</span><span class="n">high</span><span class="o">-</span><span class="n">level</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 79</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 80</span><span class="n">idea</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 81</span><span class="n">ideal</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 82</span><span class="n">implemented</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 83</span><span class="ow">in</span><span class="p">:</span> <span class="mi">6</span>
+<span class="linenos"> 84</span><span class="n">informally</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 85</span><span class="n">instead</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 86</span><span class="n">interpreted</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 87</span><span class="n">interpreter</span><span class="p">:</span> <span class="mi">4</span>
+<span class="linenos"> 88</span><span class="n">introduces</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 89</span><span class="ow">is</span><span class="p">:</span> <span class="mi">3</span>
+<span class="linenos"> 90</span><span class="n">it</span><span class="p">:</span> <span class="mi">5</span>
+<span class="linenos"> 91</span><span class="n">its</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 92</span><span class="n">language</span><span class="p">:</span> <span class="mi">6</span>
+<span class="linenos"> 93</span><span class="n">language</span><span class="s1">&#39;s: 1</span>
+<span class="linenos"> 94</span><span class="n">languages</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 95</span><span class="n">learn</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 96</span><span class="n">library</span><span class="p">:</span> <span class="mi">4</span>
+<span class="linenos"> 97</span><span class="n">major</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 98</span><span class="n">make</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 99</span><span class="n">manual</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">100</span><span class="n">many</span><span class="p">:</span> <span class="mi">3</span>
+<span class="linenos">101</span><span class="n">may</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">102</span><span class="n">modules</span><span class="p">:</span> <span class="mi">4</span>
+<span class="linenos">103</span><span class="n">more</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">104</span><span class="n">most</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">105</span><span class="n">nature</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">106</span><span class="n">new</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">107</span><span class="ow">not</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">108</span><span class="n">noteworthy</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">109</span><span class="nb">object</span><span class="o">-</span><span class="n">oriented</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">110</span><span class="n">objects</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">111</span><span class="n">of</span><span class="p">:</span> <span class="mi">6</span>
+<span class="linenos">112</span><span class="n">off</span><span class="o">-</span><span class="n">line</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">113</span><span class="n">on</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">114</span><span class="ow">or</span><span class="p">:</span> <span class="mi">5</span>
+<span class="linenos">115</span><span class="n">other</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">116</span><span class="n">party</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">117</span><span class="n">platforms</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">118</span><span class="n">pointers</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">119</span><span class="n">powerful</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">120</span><span class="n">programming</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">121</span><span class="n">programs</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">122</span><span class="n">python</span><span class="p">:</span> <span class="mi">16</span>
+<span class="linenos">123</span><span class="n">python</span><span class="s1">&#39;s: 2</span>
+<span class="linenos">124</span><span class="n">python</span><span class="o">/</span><span class="n">c</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">125</span><span class="n">rapid</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">126</span><span class="n">read</span><span class="p">:</span> <span class="mi">3</span>
+<span class="linenos">127</span><span class="n">reader</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">128</span><span class="n">reading</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">129</span><span class="n">ready</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">130</span><span class="n">reference</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">131</span><span class="n">same</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">132</span><span class="n">scripting</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">133</span><span class="n">see</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">134</span><span class="bp">self</span><span class="o">-</span><span class="n">contained</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">135</span><span class="n">several</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">136</span><span class="n">simple</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">137</span><span class="n">single</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">138</span><span class="n">site</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">139</span><span class="n">so</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">140</span><span class="n">source</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">141</span><span class="n">standard</span><span class="p">:</span> <span class="mi">4</span>
+<span class="linenos">142</span><span class="n">structures</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">143</span><span class="n">style</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">144</span><span class="n">suitable</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">145</span><span class="n">syntax</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">146</span><span class="n">system</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">147</span><span class="n">the</span><span class="p">:</span> <span class="mi">17</span>
+<span class="linenos">148</span><span class="n">there</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">149</span><span class="n">third</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">150</span><span class="n">this</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">151</span><span class="n">to</span><span class="p">:</span> <span class="mi">9</span>
+<span class="linenos">152</span><span class="n">together</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">153</span><span class="n">tools</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">154</span><span class="n">tutorial</span><span class="p">:</span> <span class="mi">4</span>
+<span class="linenos">155</span><span class="n">types</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">156</span><span class="n">typing</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">157</span><span class="n">used</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">158</span><span class="n">various</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">159</span><span class="n">web</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">160</span><span class="n">well</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">161</span><span class="n">will</span><span class="p">:</span> <span class="mi">3</span>
+<span class="linenos">162</span><span class="k">with</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">163</span><span class="n">write</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">164</span><span class="n">you</span><span class="p">:</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 10.4 </span><span class="caption-text">Case__python_2_word_frequency.txt</span><a class="headerlink" href="#id4" title="Link to this code">#</a></div>
+<div class="output-file highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="mi">1</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">  2</span><span class="n">a</span><span class="p">:</span> <span class="mi">21</span>
+<span class="linenos">  3</span><span class="n">allows</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">  4</span><span class="n">also</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">  5</span><span class="n">an</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">  6</span><span class="ow">and</span><span class="p">:</span> <span class="mi">10</span>
+<span class="linenos">  7</span><span class="n">appetite</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">  8</span><span class="n">applicable</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">  9</span><span class="n">application</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 10</span><span class="n">applications</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 11</span><span class="n">are</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 12</span><span class="n">around</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 13</span><span class="n">arrays</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 14</span><span class="k">as</span><span class="p">:</span> <span class="mi">4</span>
+<span class="linenos"> 15</span><span class="n">at</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 16</span><span class="n">automate</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 17</span><span class="n">available</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 18</span><span class="n">awk</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 19</span><span class="n">basis</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 20</span><span class="n">batch</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 21</span><span class="n">be</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 22</span><span class="n">because</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 23</span><span class="n">being</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 24</span><span class="n">best</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 25</span><span class="n">built</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 26</span><span class="n">bunch</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 27</span><span class="n">but</span><span class="p">:</span> <span class="mi">4</span>
+<span class="linenos"> 28</span><span class="n">c</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 29</span><span class="n">c</span><span class="o">/</span><span class="n">c</span><span class="o">++/</span><span class="n">java</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 30</span><span class="n">can</span><span class="p">:</span> <span class="mi">4</span>
+<span class="linenos"> 31</span><span class="n">changing</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 32</span><span class="n">checking</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 33</span><span class="n">code</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 34</span><span class="n">collection</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 35</span><span class="n">comes</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 36</span><span class="n">complicated</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 37</span><span class="n">computers</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 38</span><span class="n">could</span><span class="p">:</span> <span class="mi">3</span>
+<span class="linenos"> 39</span><span class="n">custom</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 40</span><span class="n">cycle</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 41</span><span class="n">data</span><span class="p">:</span> <span class="mi">3</span>
+<span class="linenos"> 42</span><span class="n">database</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 43</span><span class="n">design</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 44</span><span class="n">developer</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 45</span><span class="n">development</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 46</span><span class="n">dictionaries</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 47</span><span class="n">do</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 48</span><span class="n">domain</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 49</span><span class="n">don</span><span class="s1">&#39;t: 1</span>
+<span class="linenos"> 50</span><span class="n">done</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 51</span><span class="n">easy</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 52</span><span class="n">error</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 53</span><span class="n">even</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 54</span><span class="n">eventually</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 55</span><span class="n">example</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 56</span><span class="n">extension</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 57</span><span class="n">files</span><span class="p">:</span> <span class="mi">5</span>
+<span class="linenos"> 58</span><span class="n">find</span><span class="p">:</span> <span class="mi">3</span>
+<span class="linenos"> 59</span><span class="n">first</span><span class="o">-</span><span class="n">draft</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 60</span><span class="n">flexible</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 61</span><span class="k">for</span><span class="p">:</span> <span class="mi">7</span>
+<span class="linenos"> 62</span><span class="n">game</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 63</span><span class="n">games</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 64</span><span class="n">general</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 65</span><span class="n">get</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 66</span><span class="n">gui</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 67</span><span class="n">hand</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 68</span><span class="n">has</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 69</span><span class="n">have</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 70</span><span class="n">help</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 71</span><span class="n">high</span><span class="o">-</span><span class="n">level</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 72</span><span class="k">if</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 73</span><span class="n">implement</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 74</span><span class="ow">in</span><span class="p">:</span> <span class="mi">5</span>
+<span class="linenos"> 75</span><span class="n">into</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 76</span><span class="ow">is</span><span class="p">:</span> <span class="mi">6</span>
+<span class="linenos"> 77</span><span class="n">it</span><span class="p">:</span> <span class="mi">4</span>
+<span class="linenos"> 78</span><span class="n">its</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 79</span><span class="n">job</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 80</span><span class="n">just</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 81</span><span class="n">language</span><span class="p">:</span> <span class="mi">5</span>
+<span class="linenos"> 82</span><span class="n">languages</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 83</span><span class="n">large</span><span class="p">:</span> <span class="mi">3</span>
+<span class="linenos"> 84</span><span class="n">larger</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 85</span><span class="n">least</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 86</span><span class="n">libraries</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 87</span><span class="n">library</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 88</span><span class="n">like</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 89</span><span class="n">lot</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 90</span><span class="n">macos</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 91</span><span class="n">many</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 92</span><span class="n">may</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 93</span><span class="n">maybe</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 94</span><span class="n">modules</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos"> 95</span><span class="n">more</span><span class="p">:</span> <span class="mi">4</span>
+<span class="linenos"> 96</span><span class="n">moving</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 97</span><span class="n">much</span><span class="p">:</span> <span class="mi">4</span>
+<span class="linenos"> 98</span><span class="n">new</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos"> 99</span><span class="ow">not</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">100</span><span class="n">number</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">101</span><span class="n">of</span><span class="p">:</span> <span class="mi">7</span>
+<span class="linenos">102</span><span class="n">offer</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">103</span><span class="n">offering</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">104</span><span class="n">offers</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">105</span><span class="n">on</span><span class="p">:</span> <span class="mi">3</span>
+<span class="linenos">106</span><span class="n">operating</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">107</span><span class="ow">or</span><span class="p">:</span> <span class="mi">8</span>
+<span class="linenos">108</span><span class="n">other</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">109</span><span class="n">over</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">110</span><span class="n">perform</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">111</span><span class="n">perhaps</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">112</span><span class="n">perl</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">113</span><span class="n">photo</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">114</span><span class="n">problem</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">115</span><span class="n">professional</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">116</span><span class="n">program</span><span class="p">:</span> <span class="mi">4</span>
+<span class="linenos">117</span><span class="n">programming</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">118</span><span class="n">programs</span><span class="p">:</span> <span class="mi">3</span>
+<span class="linenos">119</span><span class="n">python</span><span class="p">:</span> <span class="mi">8</span>
+<span class="linenos">120</span><span class="n">quickly</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">121</span><span class="n">real</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">122</span><span class="n">rearrange</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">123</span><span class="n">rename</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">124</span><span class="n">reused</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">125</span><span class="n">script</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">126</span><span class="n">scripts</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">127</span><span class="n">search</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">replace</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">128</span><span class="n">several</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">129</span><span class="n">shell</span><span class="p">:</span> <span class="mi">3</span>
+<span class="linenos">130</span><span class="n">simple</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">131</span><span class="n">simpler</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">132</span><span class="n">slow</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">133</span><span class="n">small</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">134</span><span class="n">software</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">135</span><span class="n">some</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">136</span><span class="n">specialized</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">137</span><span class="n">split</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">138</span><span class="n">standard</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">139</span><span class="n">structure</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">140</span><span class="n">such</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">141</span><span class="n">suite</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">142</span><span class="n">support</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">143</span><span class="n">systems</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">144</span><span class="n">take</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">145</span><span class="n">task</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">146</span><span class="n">tasks</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">147</span><span class="n">tedious</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">148</span><span class="n">test</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">149</span><span class="n">testing</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">150</span><span class="n">text</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">151</span><span class="n">than</span><span class="p">:</span> <span class="mi">3</span>
+<span class="linenos">152</span><span class="n">that</span><span class="p">:</span> <span class="mi">4</span>
+<span class="linenos">153</span><span class="n">the</span><span class="p">:</span> <span class="mi">6</span>
+<span class="linenos">154</span><span class="n">there</span><span class="s1">&#39;s: 1</span>
+<span class="linenos">155</span><span class="n">these</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">156</span><span class="n">things</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">157</span><span class="n">those</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">158</span><span class="n">time</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">159</span><span class="n">to</span><span class="p">:</span> <span class="mi">10</span>
+<span class="linenos">160</span><span class="n">too</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">161</span><span class="n">types</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">162</span><span class="n">unix</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">163</span><span class="n">use</span><span class="p">:</span> <span class="mi">4</span>
+<span class="linenos">164</span><span class="n">usual</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">165</span><span class="n">very</span><span class="o">-</span><span class="n">high</span><span class="o">-</span><span class="n">level</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">166</span><span class="n">want</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">167</span><span class="n">way</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">168</span><span class="n">well</span><span class="o">-</span><span class="n">suited</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">169</span><span class="n">whetting</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">170</span><span class="n">whole</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">171</span><span class="n">will</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">172</span><span class="n">windows</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">173</span><span class="n">wish</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">174</span><span class="k">with</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">175</span><span class="n">work</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">176</span><span class="n">write</span><span class="p">:</span> <span class="mi">3</span>
+<span class="linenos">177</span><span class="n">write</span><span class="o">/</span><span class="nb">compile</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">re</span><span class="o">-</span><span class="nb">compile</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">178</span><span class="n">writing</span><span class="p">:</span> <span class="mi">2</span>
+<span class="linenos">179</span><span class="n">written</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">180</span><span class="n">yet</span><span class="p">:</span> <span class="mi">1</span>
+<span class="linenos">181</span><span class="n">you</span><span class="p">:</span> <span class="mi">11</span>
+<span class="linenos">182</span><span class="n">you</span><span class="s1">&#39;d: 2</span>
+<span class="linenos">183</span><span class="n">you</span><span class="s1">&#39;re: 2</span>
+<span class="linenos">184</span><span class="n">you</span><span class="s1">&#39;ve: 1</span>
+<span class="linenos">185</span><span class="n">your</span><span class="p">:</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="deliverables">
+<span id="mod-python-09-4-file-analysis-deliverables"></span><h2>Deliverables<a class="headerlink" href="#deliverables" title="Link to this heading">#</a></h2>
+<p>Save your finished program as <code class="file docutils literal notranslate"><span class="pre">file_analysis_login.py</span></code>,
+replacing <code class="docutils literal notranslate"><span class="pre">login</span></code> with your Purdue login.  Then submit it along with
+all the deliverables listed in
+<a class="reference internal" href="#tab-python-09-4-file-analysis-deliverables"><span class="std std-numref">Table 10.8</span></a> below.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="tab-python-09-4-file-analysis-deliverables">
+<caption><span class="caption-number">Table 10.8 </span><span class="caption-text">Deliverables</span><a class="headerlink" href="#tab-python-09-4-file-analysis-deliverables" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Deliverable</p></th>
+<th class="head text-left"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="file docutils literal notranslate"><span class="pre">file_analysis_login.py</span></code></p></td>
+<td class="text-left"><p>Your finished program.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Screenshot(s)</p></td>
+<td class="text-left"><p>PNG(s) capturing <strong>all 0</strong> test cases.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Python/09/exercises/4/file_analysis"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../3/course_info/instructions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">10.2.3. </span>Course Info</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../../../10/0_overview.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Plotting</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-output">Sample Output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deliverables">Deliverables</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href="/fall-2024/Appendices/contributors.html">Contributors</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024 All rights reserved.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

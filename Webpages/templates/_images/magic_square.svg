@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: dpic version 2021.11.01 option -v for SVG 1.1 -->
+<!-- width="136" height="180" -->
+<svg
+ xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+ xml:space="preserve"
+ style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision;
+ image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+ width="134.706849px" height="178.542466px"
+ viewBox="0 0 134.706849 178.542466"
+ font-size="11pt" text-anchor="middle"
+ stroke="black" stroke-miterlimit="10" stroke-width="1.066667" fill="none">
+<g>
+<rect x="1.066667" y="102.816438" width="29.223744" height="29.223744" />
+<text font-size="15.094909pt" stroke-width="0.2pt" fill="black" x="15.678539" y="124.070071">2</text>
+<rect x="30.290411" y="102.816438" width="29.223744" height="29.223744" />
+<text font-size="15.094909pt" stroke-width="0.2pt" fill="black" x="44.902283" y="124.070071">7</text>
+<rect x="59.514155" y="102.816438" width="29.223744" height="29.223744" />
+<text font-size="15.094909pt" stroke-width="0.2pt" fill="black" x="74.126027" y="124.070071">6</text>
+<rect x="1.066667" y="73.592694" width="29.223744" height="29.223744" />
+<text font-size="15.094909pt" stroke-width="0.2pt" fill="black" x="15.678539" y="94.846326">9</text>
+<rect x="30.290411" y="73.592694" width="29.223744" height="29.223744" />
+<text font-size="15.094909pt" stroke-width="0.2pt" fill="black" x="44.902283" y="94.846326">5</text>
+<rect x="59.514155" y="73.592694" width="29.223744" height="29.223744" />
+<text font-size="15.094909pt" stroke-width="0.2pt" fill="black" x="74.126027" y="94.846326">1</text>
+<rect x="1.066667" y="44.36895" width="29.223744" height="29.223744" />
+<text font-size="15.094909pt" stroke-width="0.2pt" fill="black" x="15.678539" y="65.622582">4</text>
+<rect x="30.290411" y="44.36895" width="29.223744" height="29.223744" />
+<text font-size="15.094909pt" stroke-width="0.2pt" fill="black" x="44.902283" y="65.622582">3</text>
+<rect x="59.514155" y="44.36895" width="29.223744" height="29.223744" />
+<text font-size="15.094909pt" stroke-width="0.2pt" fill="black" x="74.126027" y="65.622582">8</text>
+<polygon stroke-width="0" fill="black"
+ points="18.078539,137.052055 15.678539,146.652055
+13.278539,137.052055" />
+<line x1="15.678539" y1="132.040183" x2="15.678539" y2="144.453065" />
+<text font-size="15.094909pt" stroke-width="0.2pt" fill="black" x="15.678539" y="167.905687">15</text>
+<polygon stroke-width="0" fill="black"
+ points="47.302283,137.052055 44.902283,146.652055
+42.502283,137.052055" />
+<line x1="44.902283" y1="132.040183" x2="44.902283" y2="144.453065" />
+<text font-size="15.094909pt" stroke-width="0.2pt" fill="black" x="44.902283" y="167.905687">15</text>
+<polygon stroke-width="0" fill="black"
+ points="76.526027,137.052055 74.126027,146.652055
+71.726027,137.052055" />
+<line x1="74.126027" y1="132.040183" x2="74.126027" y2="144.453065" />
+<text font-size="15.094909pt" stroke-width="0.2pt" fill="black" x="74.126027" y="167.905687">15</text>
+<polygon stroke-width="0" fill="black"
+ points="93.749772,115.028311 103.349772,117.428311
+93.749772,119.828311" />
+<line x1="88.7379" y1="117.428311" x2="101.150782" y2="117.428311" />
+<text font-size="15.094909pt" stroke-width="0.2pt" fill="black" x="117.961644" y="124.070071">15</text>
+<polygon stroke-width="0" fill="black"
+ points="93.749772,85.804566 103.349772,88.204566
+93.749772,90.604566" />
+<line x1="88.7379" y1="88.204566" x2="101.150782" y2="88.204566" />
+<text font-size="15.094909pt" stroke-width="0.2pt" fill="black" x="117.961644" y="94.846326">15</text>
+<polygon stroke-width="0" fill="black"
+ points="93.749772,56.580822 103.349772,58.980822
+93.749772,61.380822" />
+<line x1="88.7379" y1="58.980822" x2="101.150782" y2="58.980822" />
+<text font-size="15.094909pt" stroke-width="0.2pt" fill="black" x="117.961644" y="65.622582">15</text>
+<polygon stroke-width="0" fill="black"
+ points="98.258603,138.166773 103.349772,146.652055
+94.86449,141.560886" />
+<line x1="88.7379" y1="132.040183" x2="101.794851" y2="145.097134" />
+<text font-size="15.094909pt" stroke-width="0.2pt" fill="black" x="117.961644" y="167.905687">15</text>
+<polygon stroke-width="0" fill="black"
+ points="94.86449,34.848246 103.349772,29.757078
+98.258603,38.242359" />
+<line x1="88.7379" y1="44.36895" x2="101.794851" y2="31.311998" />
+<text font-size="15.094909pt" stroke-width="0.2pt" fill="black" x="117.961644" y="21.786966">15</text>
+</g></svg>
