@@ -20,5 +20,6 @@ from django.urls import path, include
 app_name = 'Webpages'
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('Webpages.urls')),
+    # path('', include('Webpages.urls')),
+    path('', include('json_view.urls')),
 ]

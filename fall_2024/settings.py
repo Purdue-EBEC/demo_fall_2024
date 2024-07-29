@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Webpages',
+    #'Webpages',
+    'sphinx_view',
+    'json_view',
 ]
 
 MIDDLEWARE = [
@@ -119,7 +121,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'Webpages/templates/_static/'
+#STATIC_URL = 'Webpages/templates/_static/'
+STATIC_URL = 'json_view/json/'
 
 STATIC_ROOT = os.getenv('STATIC_ROOT')
 
